@@ -20,8 +20,6 @@ export default function App() {
   try {
     await navigator.clipboard.writeText(text)
     setCopied(true)
-
-    // hide after 1.5 seconds
     setTimeout(() => setCopied(false), 1500)
   } catch (e) {
     console.error('copy failed', e)
@@ -48,8 +46,8 @@ export default function App() {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
         const data = await res.json()
         setTopics(data.results)
-      } catch (error: Error | any) {
-        alert(`Failed to fetch topics: ${error.message}`)
+      } catch (error: unknown) {
+        alert(`Failed to fetch topics: ${error instanceof Error ? error.message : 'Unknown error'}`)
       }
     }
     fetchTopics()
