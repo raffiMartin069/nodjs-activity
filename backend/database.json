@@ -1,0 +1,43 @@
+{
+    "topics": [
+        {
+            "code": "// var is function-scoped and hoisted\nvar a = 1\n\n// let is block-scoped and mutable\nlet b = 2\n\n// const is block-scoped with immutable binding\nconst c = 3\n\nfunction demo() {\n  if (true) {\n    var a = 10\n    let b = 20\n    const c = 30\n  }\n  console.log(a) // 10\n  // console.log(b) // ReferenceError\n}",
+            "description": "Compare declarations. Quick rules and short examples to clarify hoisting, scoping, and immutability.",
+            "id": 1,
+            "subtitle": "let · const · var — scope and binding",
+            "name": "Variables Basics",
+            "image": "https://tse3.mm.bing.net/th/id/OIP.reGU8rk9h0VhefuTOeJ5cwHaEH?pid=Api&P=0&h=180"
+        },
+        {
+            "code": "// Function declarations\nfunction add(x, y) {\n  return x + y;\n}\n\n// Function expressions\nconst subtract = function(x, y) {\n  return x - y;\n};\n\n// Arrow functions\nconst multiply = (x, y) => x * y;\n\n// Async functions\nconst fetchData = async () => {\n  const response = await fetch('https://api.example.com/data');\n  return response.json();\n};\n\n// Generator functions\nfunction* idGenerator() {\n  let id = 1;\n  while (true) {\n    yield id++;\n  }\n}",
+            "description": "Declarations, expressions, arrows, async, generators",
+            "id": 2,
+            "subtitle": "declarations · expressions · arrows · async · generators",
+            "name": "Functions Basics",
+            "image": "https://fireship.io/courses/javascript/img/function-declaration.png"
+        },
+        {
+            "code": "// Object literal\nconst person = {\n  name: 'Alice',\n  age: 30,\n  address: {\n    city: 'Wonderland',\n    zip: '12345'\n  }\n};\n\n// Shallow copy using spread operator\nconst shallowCopy = { ...person };\n\n// Deep copy using JSON methods (not suitable for functions or special objects)\nconst deepCopy = JSON.parse(JSON.stringify(person));\n\n// Practical pattern for immutability using Object.assign\nconst updatedPerson = Object.assign({}, person, { age: 31 });\n\n// Using structuredClone for deep cloning (modern browsers and Node.js)\nconst clonedPerson = structuredClone(person);",
+            "description": "Object literal, shallow copy, nested structures and practical patterns for immutability and cloning.",
+            "id": 3,
+            "subtitle": "literals · shallow copy · nested structures · immutability · cloning",
+            "name": "Objects Basics",
+            "image": "https://i.ytimg.com/vi/J4D7ZlGJ9cY/maxresdefault.jpg"
+        },
+        {
+            "code": "// Array creation\nconst numbers = [1, 2, 3, 4, 5];\n\n// Traversal using forEach\nnumbers.forEach(num => console.log(num));\n\n// Transformation using map\nconst squares = numbers.map(num => num * num);\n\n// Filtering using filter\nconst evens = numbers.filter(num => num % 2 === 0);\n\n// Reducing using reduce\nconst sum = numbers.reduce((acc, num) => acc + num, 0);\n\n// Finding using find\nconst firstEven = numbers.find(num => num % 2 === 0);",
+            "description": "Readable examples for creation, traversal, transformation, and common higher-order operators.",
+            "id": 4,
+            "subtitle": "creation · traversal · transformation · higher-order functions",
+            "name": "Arrays Basics",
+            "image": "https://tecadmin.net/wp-content/uploads/2023/02/javascript-array-blocks.png"
+        }
+    ],
+    "users": [
+        {
+            "email": "john.doe@example.com",
+            "id": 1,
+            "name": "John Doe"
+        }
+    ]
+}
