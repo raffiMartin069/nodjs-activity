@@ -1,56 +1,38 @@
 import { createServer } from 'node:http';
-import { HomeController } from './controllers/homeController.js';
-import { DbContext } from './configurations/dbContext.js';
-import path from 'path';
-import url from 'url';
+import { HttpRequest } from './components/request.js';
+import { HttpResponse } from './components/response.js';
+import { promises as fs } from 'node:fs';
 
-const cors = (res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    if (res.method === 'OPTIONS') {
-        res.writeHead(204);
-        res.end();
-        return true;
-    }
-    return false;
-}
+// Arrow function using ES6 syntax
+const server = createServer( async (req, res) => {
 
-const bootstrap = async () => {
+    const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
+    req.url = parsedUrl.pathname;
 
-    const databasePath = path.resolve() + '/database.json';
-    const db = new DbContext(databasePath);
-    const databaseInstance = await db.getDatabase();
+    // Class objects
+    const request = new HttpRequest(req.method, req.url, req.headers);
+    const response = new HttpResponse(res);
 
-    const server = createServer(async (req, res) => {
-        if (cors(res)) return;
-        const parsedUrl = url.parse(req.url, true);
-        const key = `${req.method} ${parsedUrl.pathname}`;
-        const apiController = new HomeController(databaseInstance);
-        
-        switch (key) {
-            case "GET /":
-                await apiController.Authentication(req, res);
-                break;
-            case "GET /topics":
-                await apiController.Topics(req, res);
-                break;
-            default:
-                res.writeHead(404, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ error: "Not Found" }));
-                break;
+    const database = JSON.parse(await fs.readFile('./database.json'), 'utf-8');
+
+    if (request.url === '/') {
+        response.status(200).send('Hello, welcome to our school website!');
+    } else if (request.url === '/students') {
+        // Array of student objects
+        var students = [];
+        for (const studs in database.students) {
+            students.push(database.students[studs]);
         }
-        
-    });
+        response.status(200).send(students);
+    } else if (request.url === '/topics') {
+        let topics = JSON.parse(await fs.readFile('./database.json'), 'utf-8');
+        response.status(200).send(database.topics);
+    } else {
+        response.status(404).send({ error: 'Not Found' });
+    }
 
-    const PORT = 3000;
-    server.listen(PORT, () => {
-        console.log(`Server is running on http://localhost:${PORT}`);
-    });
-}
+});
 
-try {
-    bootstrap();
-} catch (error) {
-    console.error("Failed to start the server:", error);
-}
+server.listen(3000, '127.0.0.1', () => {
+    console.log('Listening on 127.0.0.1:3000');
+});

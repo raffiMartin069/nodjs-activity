@@ -4,40 +4,115 @@
             "code": "// var is function-scoped and hoisted\nvar a = 1\n\n// let is block-scoped and mutable\nlet b = 2\n\n// const is block-scoped with immutable binding\nconst c = 3\n\nfunction demo() {\n  if (true) {\n    var a = 10\n    let b = 20\n    const c = 30\n  }\n  console.log(a) // 10\n  // console.log(b) // ReferenceError\n}",
             "description": "Compare declarations. Quick rules and short examples to clarify hoisting, scoping, and immutability.",
             "id": 1,
-            "subtitle": "let · const · var — scope and binding",
+            "image": "https://tse3.mm.bing.net/th/id/OIP.reGU8rk9h0VhefuTOeJ5cwHaEH?pid=Api&P=0&h=180",
             "name": "Variables Basics",
-            "image": "https://tse3.mm.bing.net/th/id/OIP.reGU8rk9h0VhefuTOeJ5cwHaEH?pid=Api&P=0&h=180"
+            "subtitle": "let · const · var — scope and binding"
         },
         {
             "code": "// Function declarations\nfunction add(x, y) {\n  return x + y;\n}\n\n// Function expressions\nconst subtract = function(x, y) {\n  return x - y;\n};\n\n// Arrow functions\nconst multiply = (x, y) => x * y;\n\n// Async functions\nconst fetchData = async () => {\n  const response = await fetch('https://api.example.com/data');\n  return response.json();\n};\n\n// Generator functions\nfunction* idGenerator() {\n  let id = 1;\n  while (true) {\n    yield id++;\n  }\n}",
             "description": "Declarations, expressions, arrows, async, generators",
             "id": 2,
-            "subtitle": "declarations · expressions · arrows · async · generators",
+            "image": "https://fireship.io/courses/javascript/img/function-declaration.png",
             "name": "Functions Basics",
-            "image": "https://fireship.io/courses/javascript/img/function-declaration.png"
+            "subtitle": "declarations · expressions · arrows · async · generators"
         },
         {
             "code": "// Object literal\nconst person = {\n  name: 'Alice',\n  age: 30,\n  address: {\n    city: 'Wonderland',\n    zip: '12345'\n  }\n};\n\n// Shallow copy using spread operator\nconst shallowCopy = { ...person };\n\n// Deep copy using JSON methods (not suitable for functions or special objects)\nconst deepCopy = JSON.parse(JSON.stringify(person));\n\n// Practical pattern for immutability using Object.assign\nconst updatedPerson = Object.assign({}, person, { age: 31 });\n\n// Using structuredClone for deep cloning (modern browsers and Node.js)\nconst clonedPerson = structuredClone(person);",
             "description": "Object literal, shallow copy, nested structures and practical patterns for immutability and cloning.",
             "id": 3,
-            "subtitle": "literals · shallow copy · nested structures · immutability · cloning",
+            "image": "https://i.ytimg.com/vi/J4D7ZlGJ9cY/maxresdefault.jpg",
             "name": "Objects Basics",
-            "image": "https://i.ytimg.com/vi/J4D7ZlGJ9cY/maxresdefault.jpg"
+            "subtitle": "literals · shallow copy · nested structures · immutability · cloning"
         },
         {
             "code": "// Array creation\nconst numbers = [1, 2, 3, 4, 5];\n\n// Traversal using forEach\nnumbers.forEach(num => console.log(num));\n\n// Transformation using map\nconst squares = numbers.map(num => num * num);\n\n// Filtering using filter\nconst evens = numbers.filter(num => num % 2 === 0);\n\n// Reducing using reduce\nconst sum = numbers.reduce((acc, num) => acc + num, 0);\n\n// Finding using find\nconst firstEven = numbers.find(num => num % 2 === 0);",
             "description": "Readable examples for creation, traversal, transformation, and common higher-order operators.",
             "id": 4,
-            "subtitle": "creation · traversal · transformation · higher-order functions",
+            "image": "https://tecadmin.net/wp-content/uploads/2023/02/javascript-array-blocks.png",
             "name": "Arrays Basics",
-            "image": "https://tecadmin.net/wp-content/uploads/2023/02/javascript-array-blocks.png"
+            "subtitle": "creation · traversal · transformation · higher-order functions"
         }
     ],
-    "users": [
+    "students": [
         {
-            "email": "john.doe@example.com",
-            "id": 1,
-            "name": "John Doe"
+            "email": "michael.lopez@example.com",
+            "gpa": 3.21,
+            "grade": "Junior",
+            "id": "8f5b1d41-6c12-4d5c-8c5e-4c41c5e13d71",
+            "major": "Economics",
+            "name": "Michael Lopez"
+        },
+        {
+            "email": "emily.brown@example.com",
+            "gpa": 3.87,
+            "grade": "Freshman",
+            "id": "2e94bc34-14b3-4d4f-a0f9-3c5e93cfb21a",
+            "major": "Biology",
+            "name": "Emily Brown"
+        },
+        {
+            "email": "robert.martinez@example.com",
+            "gpa": 2.98,
+            "grade": "Senior",
+            "id": "a46b8c8b-b84d-4e6f-91db-1a84564bb64d",
+            "major": "Computer Science",
+            "name": "Robert Martinez"
+        },
+        {
+            "email": "olivia.johnson@example.com",
+            "gpa": 3.56,
+            "grade": "Sophomore",
+            "id": "b5d12cf1-1e53-4c69-9f5b-d6e22b1f9840",
+            "major": "History",
+            "name": "Olivia Johnson"
+        },
+        {
+            "email": "daniel.gonzalez@example.com",
+            "gpa": 3.12,
+            "grade": "Senior",
+            "id": "fb4f5a55-639d-4a5c-89f9-4d1b9e9c9b7e",
+            "major": "Physics",
+            "name": "Daniel Gonzalez"
+        },
+        {
+            "email": "sophia.wilson@example.com",
+            "gpa": 3.74,
+            "grade": "Freshman",
+            "id": "1c49f6a2-94c0-42c0-8db3-9c1d77e2a33f",
+            "major": "English",
+            "name": "Sophia Wilson"
+        },
+        {
+            "email": "david.smith@example.com",
+            "gpa": 2.65,
+            "grade": "Junior",
+            "id": "de63d746-4d11-4f73-8e14-0fdce9a882b2",
+            "major": "Chemistry",
+            "name": "David Smith"
+        },
+        {
+            "email": "laura.davis@example.com",
+            "gpa": 3.44,
+            "grade": "Sophomore",
+            "id": "0c7c1f3c-94a9-4f33-9c18-66d33fc7b8d1",
+            "major": "Political Science",
+            "name": "Laura Davis"
+        },
+        {
+            "email": "james.taylor@example.com",
+            "gpa": 2.89,
+            "grade": "Senior",
+            "id": "3a02db92-95ad-4a11-9e7d-54ccecb8d041",
+            "major": "Engineering",
+            "name": "James Taylor"
+        },
+        {
+            "email": "amelia.rodriguez@example.com",
+            "gpa": 3.92,
+            "grade": "Freshman",
+            "id": "cfba12a3-cc5e-45f7-bd43-4b5f4e57a5a1",
+            "major": "Mathematics",
+            "name": "Amelia Rodriguez"
         }
     ]
 }
